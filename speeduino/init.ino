@@ -3417,6 +3417,26 @@ void initialiseTriggers(void)
       
       attachInterrupt(triggerInterrupt, triggerHandler, CHANGE); //Hardcoded change, the primaryTriggerEdge will be used in the decoder to select if it`s an inverted or non-inverted signal.
       break;
+    
+    case DECODER_BARRA:
+      //Ford Barra
+      triggerSetup_FordBARRA();
+      triggerHandler = triggerPri_missingTooth;
+      triggerSecondaryHandler = triggerSec_FordBARRA;
+      BIT_SET(decoderState, BIT_DECODER_HAS_SECONDARY);
+      getRPM = getRPM_FordBARRA;
+      getCrankAngle = getCrankAngle_FordBARRA;
+      triggerSetEndTeeth = triggerSetEndTeeth_FordBARRA;
+
+      if(configPage4.TrigEdge == 0) { primaryTriggerEdge = RISING; } // Attach the crank trigger wheel interrupt (Hall sensor drags to ground when triggering)
+      else { primaryTriggerEdge = FALLING; }
+      if(configPage4.TrigEdgeSec == 0) { secondaryTriggerEdge = RISING; }
+      else { secondaryTriggerEdge = FALLING; }
+
+      attachInterrupt(triggerInterrupt, triggerHandler, primaryTriggerEdge);
+      attachInterrupt(triggerInterrupt2, triggerSecondaryHandler, secondaryTriggerEdge);
+
+      break;
 
     default:
       triggerHandler = triggerPri_missingTooth;
