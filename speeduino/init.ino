@@ -2302,17 +2302,17 @@ void setPinMapping(byte boardID)
         //******************************************
         //******** PORTA CONNECTIONS *************** 
         //******************************************
-        pinBat = PA0; //Wakeup ADC123
+        pinBat = PA0; //
         pinTPS = PA1; //ADC123
         pinCLT = PA2; //ADC123
         pinIAT = PA3; //ADC123
         pinO2 = PA4; //ADC12
         // = PA5; //ADC12
-        // = PA6; //ADC12 LED_BUILTIN_1
-        // = PA7; //ADC12 LED_BUILTIN_2
-        // pinStepperEnable = PA8;
-        // = PA9;  //TXD1=Bluetooth module
-        // = PA10; //RXD1=Bluetooth module
+        // = PA6; //ADC12
+        // = PA7; //ADC12
+        // = PA8; // Stepper Enable
+        // = PA9;  // TXD
+        // = PA10; // RXD
         // = PA11; //(DO NOT USE FOR SPEEDUINO) USB
         // = PA12; //(DO NOT USE FOR SPEEDUINO) USB 
         // = PA13;  //(DO NOT USE FOR SPEEDUINO) NOT ON GPIO - DEBUG ST-LINK
@@ -2328,17 +2328,17 @@ void setPinMapping(byte boardID)
         // = PB3;  //(DO NOT USE FOR SPEEDUINO) SPI1_SCK FLASH CHIP
         // = PB4;  //(DO NOT USE FOR SPEEDUINO) SPI1_MISO FLASH CHIP
         // = PB5;  //(DO NOT USE FOR SPEEDUINO) SPI1_MOSI FLASH CHIP
-        // = PB6;  //NRF_CE
-        // = PB7;  //NRF_CS
-        pinVSS = PB8;  //NRF_IRQ
+        // = PB6;  //
+        // = PB7;  //
+        pinVSS = PB8;  //
         // = PB9; //
-        // = PB9;  //
-        // = PB10; //TXD3
-        // = PB11; //RXD3
-        // = PB12; //
-        // = PB13;  //SPI2_SCK
-        pinCoil4 = PB14;  //SPI2_MISO
-        pinCoil3 = PB15;  //SPI2_MOSI
+        // = PB9;  // IN2 - GND TRIGGER
+        // = PB10; // TXD3?
+        // = PB11; // RXD3?
+        // = PB12; // CAN1 RX
+        // = PB13;  // CAN1 TX
+        pinCoil4 = PB14;  //
+        pinCoil3 = PB15;  //
 
         //******************************************
         //******** PORTC CONNECTIONS *************** 
@@ -2351,11 +2351,11 @@ void setPinMapping(byte boardID)
         pinOilPressure = PC5;  //ADC12
         pinIdle1 = PC6; //
         pinBoost = PC7; //
-        // = PC8;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D0
-        // = PC9;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1
-        // = PC10;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D2
-        // = PC11;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D3
-        // = PC12;  //(DO NOT USE FOR SPEEDUINO) - SDIO_SCK
+        // = PC8;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D0 - Stepper Step
+        // = PC9;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D1 - Stepper Dir
+        // = PC10;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D2 - Built-in LED1
+        // = PC11;  //(DO NOT USE FOR SPEEDUINO) - SDIO_D3 - Built-in LED2
+        // = PC12;  //(DO NOT USE FOR SPEEDUINO) - SDIO_SCK - Built-in LED3
         pinTrigger = PC13; //
         // = PC14;  //(DO NOT USE FOR SPEEDUINO) - OSC32_IN
         // = PC15;  //(DO NOT USE FOR SPEEDUINO) - OSC32_OUT
@@ -2363,14 +2363,14 @@ void setPinMapping(byte boardID)
         //******************************************
         //******** PORTD CONNECTIONS *************** 
         //******************************************
-        // = PD0;  //CANRX
-        // = PD1;  //CANTX
+        // = PD0;  // CANRX
+        // = PD1;  // CANTX
         // = PD2;  //(DO NOT USE FOR SPEEDUINO) - SDIO_CMD
         // = PD3; //
         // = PD4;  //
         // = PD4;
-        // = PD5; //TXD2
-        // = PD6;  //RXD2
+        // = PD5; // TXD2?
+        // = PD6;  // RXD2?
         // = PD7; //
         // = PD7;  //
         pinCoil5 = PD8;  //
@@ -2385,11 +2385,11 @@ void setPinMapping(byte boardID)
         //******************************************
         //******** PORTE CONNECTIONS *************** 
         //******************************************
-        // = PE0; //
-        // = PE1; //
+        // = PE0; // IN - GND TRIGGER
+        // = PE1; // IN - GND TRIGGER
         pinFan = PE2; //
-        pinFuelPump = PE3; //ONBOARD KEY1
-        pinSpareLOut1 = PE4;  //ONBOARD KEY2
+        pinFuelPump = PE3; //
+        pinSpareLOut1 = PE4;  //
         pinTachOut = PE5; //
         pinTrigger2 = PE6; //
         // = PE7; //
