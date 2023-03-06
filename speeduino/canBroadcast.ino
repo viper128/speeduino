@@ -34,15 +34,12 @@ void DashMessage(uint16_t DashMessageID)
   switch (DashMessageID)
   {
     case CAN_BMW_DME1:
-      uint32_t temp_RPM;
-      temp_RPM = currentStatus.RPM * 64;  //RPM conversion is currentStatus.RPM * 6.4, but this does it without floats.
-      temp_RPM = temp_RPM / 10;
       outMsg.id = DashMessageID;
       outMsg.len = 8;
       outMsg.buf[0] = 0x05;  //bitfield, Bit0 = 1 = terminal 15 on detected, Bit2 = 1 = the ASC message ASC1 was received within the last 500 ms and contains no plausibility errors
       outMsg.buf[1] = 0x0C;  //Indexed Engine Torque in % of C_TQ_STND TBD do torque calculation.
-      outMsg.buf[2] = lowByte(uint16_t(temp_RPM));  //lsb RPM
-      outMsg.buf[3] = highByte(uint16_t(temp_RPM)); //msb RPM
+      outMsg.buf[2] = 0x00;  //lsb RPM
+      outMsg.buf[3] = currentStatus.RPM / 40; //msb RPM. RPM conversion is currentStatus.RPM * 6.4, but this does close enough without floats.
       outMsg.buf[4] = 0x0C;  //Indicated Engine Torque in % of C_TQ_STND TBD do torque calculation!! Use same as for byte 1
       outMsg.buf[5] = 0x15;  //Engine Torque Loss (due to engine friction, AC compressor and electrical power consumption)
       outMsg.buf[6] = 0x00;  //not used
