@@ -52,7 +52,7 @@ void DashMessage(uint16_t DashMessageID)
     case CAN_BMW_DME2:
       uint8_t temp_TPS;
       uint8_t temp_BARO;
-      uint16_t temp_CLT;
+      int16_t temp_CLT;
       temp_TPS = map(currentStatus.TPS, 0, 100, 0, 254);//TPS value conversion (from 0x00 to 0xFE)
       temp_CLT = (((currentStatus.coolant - CALIBRATION_TEMPERATURE_OFFSET) + 48)*4/3); //CLT conversion (actual value to add is 48.373, but close enough)
       if (temp_CLT > 255) { temp_CLT = 255; } //CLT conversion can yield to higher values than what fits to byte, so limit the maximum value to 255.
@@ -83,13 +83,14 @@ void DashMessage(uint16_t DashMessageID)
     break;
 
     case 0x280:       //RPM for VW instrument cluster
+      int16_t temp_RPM;
       temp_RPM =  currentStatus.RPM * 4; //RPM conversion
       outMsg.id = DashMessageID;
       outMsg.len = 8;
       outMsg.buf[0] = 0x49;
       outMsg.buf[1] = 0x0E;
-      outMsg.buf[2] = lowByte(uint16_t(temp_RPM));  //lsb RPM
-      outMsg.buf[3] = highByte(uint16_t(temp_RPM)); //msb RPM
+      outMsg.buf[2] = lowByte(temp_RPM);
+      outMsg.buf[3] = highByte(temp_RPM);
       outMsg.buf[4] = 0x0E;
       outMsg.buf[5] = 0x00;
       outMsg.buf[6] = 0x1B;
