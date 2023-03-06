@@ -2317,12 +2317,12 @@ void setPinMapping(byte boardID)
         // = PA12; //(DO NOT USE FOR SPEEDUINO) USB 
         // = PA13;  //(DO NOT USE FOR SPEEDUINO) NOT ON GPIO - DEBUG ST-LINK
         // = PA14;  //(DO NOT USE FOR SPEEDUINO) NOT ON GPIO - DEBUG ST-LINK
-        // = PA15;  //(DO NOT USE FOR SPEEDUINO) NOT ON GPIO - DEBUG ST-LINK
+        // = PA15;  //(DO NOT USE FOR SPEEDUINO) NOT ON GPIO - DEBUG ST-LINK - SPI FLASH CHIP CS pin
 
         //******************************************
         //******** PORTB CONNECTIONS *************** 
         //******************************************
-        // = PB0;  //(DO NOT USE FOR SPEEDUINO) ADC123 - SPI FLASH CHIP CS pin
+        pinMAP = PB0;  //(DO NOT USE FOR SPEEDUINO) ADC123
         pinBaro = PB1; //ADC12
         // = PB2;  //(DO NOT USE FOR SPEEDUINO) BOOT1 
         // = PB3;  //(DO NOT USE FOR SPEEDUINO) SPI1_SCK FLASH CHIP
